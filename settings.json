@@ -1,0 +1,45 @@
+{
+    "workbench.colorTheme": "Vampire Theme",
+    "editor.fontsize": 20,
+    "window.zoomLevel": 1,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "terminal.integrated.env.windows": {
+        "PATH": "E:\\Octave\\mingw64\\bin;C:\\Users\\josen\\anaconda3\\python.exe;${env:PATH}"
+      },
+    "code-runner.executorMap": {
+        "cpp": "cd $dir && g++ -fopenmp -lpthread -std=c++17 $fileName -o .\\$fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "python": "./python" 
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.ignoreSelection": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": false,
+    "[python]": {
+        "editor.formatOnSave": true
+    },
+    "python.testing.unittestEnabled": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "arduino.commandPath": "",
+    "arduino.path": "C:\\Program Files (x86)\\Arduino",
+    "arduino.additionalUrls": [
+        "",
+        "http://arduino.esp8266.com/stable/package_esp8266com_index.json",
+        "https://dl.espressif.com/dl/package_esp32_index.json"
+        ],
+        "python.defaultInterpreterPath": "C:\\Users\\josen\\anaconda3\\python.exe",
+        "git.openRepositoryInParentFolders": "never",
+        "redhat.telemetry.enabled": true,
+        "code-runner.languageIdToFileExtensionMap": {
+            
+            "bat": ".bat",
+            "powershell": ".ps1",
+            "typescript": ".ts"
+        },
+}
