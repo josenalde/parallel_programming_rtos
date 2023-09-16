@@ -15,18 +15,18 @@ void t1(void* z) {
         //disponivel em 200ms, retornara FALSE
         if (xSemaphoreTake(SMF, pdMS_TO_TICKS(200)) == true) { //sem_post
             //Se obteu o semaforo entre os 200ms de espera, fara o toggle do pino 23
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 4; i++) {
                 digitalWrite(23, HIGH);
-                vTaskDelay(pdMS_TO_TICKS(1000));
+                vTaskDelay(pdMS_TO_TICKS(400));
                 digitalWrite(23, LOW);
-                vTaskDelay(pdMS_TO_TICKS(1000));
+                vTaskDelay(pdMS_TO_TICKS(400));
             }
         } else {
-            for (int i = 0; i < 10; i++) { //no pino 22
+            for (int i = 0; i < 4; i++) { //no pino 22
                 digitalWrite(22, HIGH);
-                vTaskDelay(pdMS_TO_TICKS(1000));
+                vTaskDelay(pdMS_TO_TICKS(400));
                 digitalWrite(22, LOW);
-                vTaskDelay(pdMS_TO_TICKS(1000));
+                vTaskDelay(pdMS_TO_TICKS(400));
             }
         }
         vTaskDelay(pdMS_TO_TICKS(100));
