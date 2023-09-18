@@ -1,7 +1,6 @@
 # include <freertos/FreeRTOS.h>
 # include <freertos/task.h>
 # include <freertos/semphr.h>
-# include <esp_system.h>
 
 SemaphoreHandle_t SMF;
 
@@ -49,6 +48,6 @@ void setup() {
 void loop() {
     //Serial.print("pino 23: ");
     //Serial.println(digitalRead(23));
-    Serial.print("pino 22: ");
-    Serial.println(digitalRead(22));
+    //Serial.print("pino 22: ");
+    //Serial.println(digitalRead(22));
 }
