@@ -7,6 +7,7 @@
  * Date: February 1, 2021
  * Author: Shawn Hymel
  * License: 0BSD
+ * Adaptado para readString por Josenalde Oliveira
  */
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
