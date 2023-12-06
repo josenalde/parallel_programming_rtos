@@ -15,6 +15,8 @@ double VCC = 3.3; // For ESP32 3.3, For Uno 5
 int yPin = 26; //GPIO26  
 //A0 for sensor pin (pv sensor)
 int sensorPin = 25; // PWM or DAC0 (25) and DAC1 (26)
+int in1Pin = 12;
+int in2Pin = 14;
 
 const int rpmMax = 2970;
 
@@ -98,6 +100,9 @@ void setup() {
   // set pin direction
   pinMode(sensorPin, INPUT);
   pinMode(yPin, OUTPUT);
+  pinMode(in1Pin, OUTPUT);
+  pinMode(in2Pin, OUTPUT);
+  
   
   rpmSetpoint = 2040; // considering 0-4095
   intSetpoint = map(rpmSetpoint, 0, rpmMax, 0, 255); // 8 bits
@@ -106,6 +111,11 @@ void setup() {
   setSampleTime(100);
   setTunings(2, 0.8, 0.5);
   //setTunings(1.41, 1.41/4.04, kp*2.92 );
+
+  // set forward movement
+  digitalWrite(in1Pin, LOW);
+  digitalWrite(in2Pin, HIGH);
+  
 }  
                             
 void loop() { //super loop
