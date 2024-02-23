@@ -3,6 +3,7 @@ import java.util.List;
 
 public class TestStream {
     public static void main(String[] args) {
+        
         // stream sequencial
         List<Integer> listOfNumbers = Arrays.asList(1, 2, 3, 4, 10, 20, 30, 40);
         listOfNumbers
@@ -11,16 +12,16 @@ public class TestStream {
                 System.out.println(number + " " + Thread.currentThread().getName())
         );
         System.out.println("Regiao Paralela: \n");
-        // stream em paralelo
+        // stream paralelo (fork)
         listOfNumbers
-            .parallelStream()
+            .parallelStream() 
             .forEach(number ->
                 System.out.println(number + " " + Thread.currentThread().getName())
         );
 
         // soma em paralelo e reduz para sum, adicionando 5 à soma total (0 valor inicial)
         int sum = listOfNumbers
-            .parallelStream()
+            .parallelStream() //fork-join added to java.util.concurrent in Java 7 to handle task management between multiple threads
             .reduce(0, Integer::sum) + 5; // lambda: (subtotal, element) -> subtotal + element)
         System.out.println(sum);
 }
