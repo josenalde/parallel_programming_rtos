@@ -27,15 +27,14 @@ public class TestStreamSum {
         // --------------------------------------------------------------------
         // Soma serial
         int s = 0;
-        long tib = System.currentTimeMillis();
-        System.out.println(tib);
+        long tib = System.nanoTime();
+
         for (int i : listOfNumbers) {
             s += i;
         }
         s += 5;
-        System.out.println(System.currentTimeMillis());
-        long difb = System.currentTimeMillis() - tib;
-        System.out.println("Tempo serial Soma: " + difb + " ms " + "com thread " + Thread.currentThread().getName());
+        long difb = System.nanoTime() - tib;
+        System.out.println("Tempo serial Soma: " + difb + " ns " + "com thread " + Thread.currentThread().getName());
         System.out.println("soma serial: " + s);
         System.out.println("----------------------------------------");
         System.out.println("Entrando na Regiao Paralela (fork): ");
@@ -49,12 +48,12 @@ public class TestStreamSum {
 
         // soma em paralelo e reduz para sum, adicionando 5 à soma total (0 valor
         // inicial)
-        tempoInicial = System.currentTimeMillis();
+        tib = System.nanoTime();
         int sum = listOfNumbers
                 .parallelStream()
                 .reduce(0, Integer::sum) + 5; // lambda: (subtotal, element) -> subtotal + element)
-        dif = System.currentTimeMillis() - tempoInicial;
-        System.out.println("Tempo paralelo Soma: " + dif + " ms com " + (p.getPoolSize() + 1) + " threads");
+        difb = System.nanoTime() - tib;
+        System.out.println("Tempo paralelo Soma: " + difb + " ns com " + (p.getPoolSize() + 1) + " threads");
         System.out.println("Soma paralela: " + sum);
 
     }
