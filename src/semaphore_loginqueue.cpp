@@ -5,7 +5,10 @@
 #include <ctime>
 #include <cstdlib>
 
-#define THREAD_NUM 16 //16 pessoas tentando simultaneamente conectar ao servidor
+//16 pessoas tentando simultaneamente conectar ao servidor
+#define THREAD_NUM 16 
+#define SLEEP_TIME_US 5000000
+
 sem_t sm;
 
 void* routine(void* args) {
@@ -13,10 +16,10 @@ void* routine(void* args) {
     std::cout << "(" << cast_arg << ")" << " Esperando na fila...\n";
     sem_wait(&sm);
         std::cout << "(" << cast_arg << ")" << "Logado...\n";
-        Sleep(rand() % 5 + 1); //dormir por tempo randômico (tempo logado)
+        usleep(rand() % SLEEP_TIME_US + 1); //dormir por tempo randômico (tempo logado)
         std::cout << "(" << cast_arg << ")" << "Saindo...\n";
     sem_post(&sm);
-    return NULL;
+    return NULL; // espera retornar endereço pois é ponteiro genérico. Retornar NULL satisfaz o compilador
 }
 
 int main() {
