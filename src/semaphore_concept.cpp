@@ -9,7 +9,7 @@ sem_t sm;
 void* routine(void* args) {
     long cast_arg = (long)args;
     sem_wait(&sm);
-        Sleep(1);
+        uleep(1000000);
         std::cout << "Oi, estou na thread " << cast_arg << std::endl;
     sem_post(&sm);
     return NULL;
