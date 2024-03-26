@@ -12,10 +12,11 @@
 static const int rate_1 = 500;  // ms
 static const int rate_2 = 300;  // ms
 static TaskHandle_t tLed1 = NULL; //handle para task
+static TaskHandle_t tLed2 = NULL; //handle para task
 // Pins
-static const int led_pin = 22;
-//#define RUNS 5
-//volatile int i = 0;
+static const int led_pin = 26;
+#define RUNS 5
+volatile int i = 0;
 
 //#define TASK_1_STACK_SIZE       (configMINIMAL_STACK_SIZE * 4)
 //#define TASK_1_PRIORITY         (tskIDLE_PRIORITY  + 1)
@@ -35,6 +36,8 @@ void toggleLED_1(void *parameter) {
     Serial.print(" com prioridade: ");
     Serial.println(uxTaskPriorityGet(NULL));
     //ESP_LOGW("main", "%s tick :  %d", __func__, xTaskGetTickCount()); //esp-idf
+    i++;
+    if (i == 2*RUNS) vTaskResume(tLed2);
   }
 }
 
@@ -53,8 +56,8 @@ void toggleLED_2(void *parameter) {
     Serial.print(" com prioridade: ");
     Serial.println(uxTaskPriorityGet(NULL));
     // Se quiser executar uma só vez ou a depender de uma condição/counter global etc.
-    //if (i == RUNS) vTaskDelete(NULL);
-    //i++; //global
+    if (i == RUNS) vTaskSuspend(NULL);
+    i++; //global
     //ESP_LOGI("main", "%s tick :  %d", __func__, xTaskGetTickCount()); //esp-idf
 
   }
@@ -85,7 +88,7 @@ void setup() {
               "Toggle 1",   // nome da task
               1024,         // tamanho em bytes
               NULL,         // parâmetros a passar a função
-              2,            // Prioridade (0 a configMAX_PRIORITIES - 1)
+              1,            // Prioridade (0 a configMAX_PRIORITIES - 1)
               &tLed1,         // handle da task
               0);     // núcleo: 0 (pro) 1 (app)
 
@@ -96,7 +99,7 @@ void setup() {
               1024,         
               NULL,         
               1,            
-              NULL,         
+              &tLed2,         
               0);     
 
   vTaskDelete(NULL); // Deleta loop(), ou seja, quem chamou setup() (TESTE COMENTAR)
