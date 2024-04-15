@@ -1,5 +1,5 @@
-# include <freertos/FreeRTOS.h>
-# include <freertos/task.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
 #include <freertos/queue.h>
 
 xQueueHandle commQueue;
@@ -7,7 +7,7 @@ static void Producer(void *pvParameters);
 static void Consumer(void *pvParameters);
  
 #define QUEUE_ITEM_SIZE 1
-#define QUEUE_LENGTH    5
+#define QUEUE_LENGTH    10
 
 //TaskHandle_t producerHandle = NULL; // um handle da task pode ser usado depois dentro de um vTaskDelete(producerHandle) por exemplo...
  
@@ -39,6 +39,11 @@ static void Producer(void *pvParameters) {
     while(1) {
         i++;
         xQueueSend(commQueue, &i, pdMS_TO_TICKS(0));
+        Serial.print("Enviei no tick: ");
+        Serial.print(xTaskGetTickCount());
+        Serial.print(" o valor: ");
+        Serial.println(i);
+        //Serial.println(uxQueueSpacesAvailable(commQueue));
         vTaskDelay(pdMS_TO_TICKS(20)); //post no fim da fila a cada 20ms
     }
 }
@@ -47,12 +52,18 @@ static void Producer(void *pvParameters) {
 static void Consumer(void *pvParameters) {
   unsigned char c;
   while(1) {
-    xQueueReceive(commQueue, &c, pdMS_TO_TICKS(10));
+    //Serial.print("Disponivel ao receber: ");
+    //Serial.println(uxQueueSpacesAvailable(commQueue));
+    xQueueReceive(commQueue, &c, pdMS_TO_TICKS(20));
+    Serial.print("Recebi no tick: ");
+    Serial.print(xTaskGetTickCount());
+    Serial.print(" o valor: ");
     Serial.println(c);
+    
+    vTaskDelay(pdMS_TO_TICKS(20));
   }
 }
 
 void loop() {
     // nada
 }
-
