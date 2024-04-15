@@ -1,5 +1,5 @@
-# include <freertos/FreeRTOS.h>
-# include <freertos/task.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
 #include <freertos/queue.h>
 
 QueueHandle_t queue;
@@ -19,6 +19,8 @@ void loop() {
     for(int i = 0; i<10; i++){
         xQueueSend(queue, &i, portMAX_DELAY);
     }
+    Serial.print("Available spaces after sending...");
+    Serial.println(uxQueueSpacesAvailable(queue));
     int element;
     for(int i = 0; i < 10; i++) {
         xQueueReceive(queue, &element, portMAX_DELAY);
@@ -26,6 +28,7 @@ void loop() {
         Serial.print("|");
     }
     Serial.println();
+    Serial.print("Available spaces after receiving...");
+    Serial.println(uxQueueSpacesAvailable(queue));
     delay(1000);
 }
-
