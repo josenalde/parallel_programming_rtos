@@ -1,3 +1,4 @@
+//https://javascript.info/websocket
 var gateway = `ws://${window.location.hostname}/ws`;
 var websocket;
 // Init web socket when the page loads
