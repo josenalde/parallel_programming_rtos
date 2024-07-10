@@ -48,7 +48,7 @@ void setup() {
   // Configure I/O direction
   pinMode(MV_PIN, OUTPUT);
   pinMode(SENSOR_PIN, INPUT);
-  pinMode(MV_PIN, LOW);
+  
   // Create a auto-reload timer for sensor readings
   getSensorReadingTimer = xTimerCreate(
                       "getSensorReadingTimer",     // Name of timer
