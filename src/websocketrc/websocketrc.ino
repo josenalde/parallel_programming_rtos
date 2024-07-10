@@ -5,17 +5,17 @@
   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 *********/
 #include <WiFi.h>
-#include <AsyncTCP.h>
-#include <ESPAsyncWebServer.h>
+#include <AsyncTCP.h> // Sketch - Libraries Add from ZIP
+#include <ESPAsyncWebServer.h> // Sketch - Libraries Add from ZIP
 
 #include "LittleFS.h"
-#include <Arduino_JSON.h>
+#include <Arduino_JSON.h> // Tools - Manage Libraries (install Arduino JSON by Arduino)
 
 #include <freertos/FreeRTOS.h>
 
 // Replace with your network credentials
-const char* ssid = "Servos_2g";
-const char* password = "discipulo";
+const char* ssid = "<your ssid>";
+const char* password = "<your password>";
 
 // Settings according to resistor value and capacitor value
 static const float R = 20000; //ohms 20k
