@@ -1,0 +1,16 @@
+Download plugin LittleFS (arquivo .vsix da última release)
+https://github.com/earlephilhower/arduino-littlefs-upload/releases
+
+Copiar para pasta \users\<xx>\.arduinoIDE
+
+Reiniciar IDE Arduino >= 2.2.1 (atual Julho 2024 2.3.2)
+
+Ctrl+Shift+P uploadfs (ver se foi instalado)
+
+Criar pasta data na pasta de seu sketch
+
+Copiar arquivos para esta pasta
+
+
+
+
