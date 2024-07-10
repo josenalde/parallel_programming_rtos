@@ -11,6 +11,10 @@ Criar pasta data na pasta de seu sketch
 
 Copiar arquivos para esta pasta
 
+Ctrl + Shift+P e clicar em upload fs - irá fazer o upload do conteúdo da pasta data para a flash do esp32
+
+Rodar o código deste repositório que lê o conteúdo do arquivo e exibe na serial
+
 
 
 
