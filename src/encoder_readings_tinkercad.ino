@@ -8,6 +8,7 @@ M1	     1	350 Motor CC com codificador
 P1	     1	12 , 5 Fonte de energia
 U2	     1	0.2 ms Osciloscópio
 R1	     1	10 kΩ Resistor
+U2       1  L293D
 */
 //based on Rocha, Carlos R.@https://www.youtube.com/watch?v=pNl9338wKXQ
 
