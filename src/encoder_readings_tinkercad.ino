@@ -1,5 +1,14 @@
 //based on Rocha, Carlos R.@https://www.youtube.com/watch?v=pNl9338wKXQ
 
+// circuit by Josenalde Oliveira: https://www.tinkercad.com/things/lnz2ALIx4NM-pidcontroldcencoder/editel?returnTo=%2Fthings%2Flnz2ALIx4NM-pidcontroldcencoder
+/*
+Nome	Quantidade	Componente
+U1	     1	Arduino Uno R3
+M1	     1	350 Motor CC com codificador
+P1	     1	12 , 5 Fonte de energia
+U2	     1	0.2 ms Osciloscópio
+R1	     1	10 kΩ Resistor
+*/
 #define SENSOR 2
 #define TIMEBASE 1000000
 
