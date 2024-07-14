@@ -26,7 +26,7 @@ void countRPM() {
    aux++;//Incrementa a váriavel.
 }
 
-void computeU() {
+void computeU() { //PID
     unsigned long now = millis();
     int timeChange = (now - lastTime);
     if (timeChange >= sampleTime) {
