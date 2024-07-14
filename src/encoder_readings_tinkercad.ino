@@ -9,6 +9,8 @@ P1	     1	12 , 5 Fonte de energia
 U2	     1	0.2 ms Osciloscópio
 R1	     1	10 kΩ Resistor
 */
+//based on Rocha, Carlos R.@https://www.youtube.com/watch?v=pNl9338wKXQ
+
 #define SENSOR 2
 #define TIMEBASE 1000000
 
@@ -25,11 +27,12 @@ void setup()
   attachInterrupt(digitalPinToInterrupt(SENSOR), pulseCounterISR, FALLING);
   pulse = 0L;
   timeToCount = lastCheck = micros();
+  pinMode(6, OUTPUT);
 }
 
 void loop()
 {
-  if (micros() >= timeToCount) { // non blocking
+  if (micros() >= timeToCount) {
   	dt = micros() - lastCheck;
     noInterrupts();
     // 350 rpm = 0.0029093 * k => k = 120304.85 
@@ -41,6 +44,11 @@ void loop()
     Serial.println(speed, 1);
     timeToCount = micros() + TIMEBASE;
   }
+  //analogWrite(6, 180); L293D em ENTRADA1 controla PWM velocidade
+}
+
+void pulseCounterISR() {
+  	pulse++;
 }
 
 void pulseCounterISR() {
