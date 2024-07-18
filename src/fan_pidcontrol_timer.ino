@@ -39,7 +39,7 @@ static TimerHandle_t generatePIDControlTimer = NULL;
 
 // get a new sample
 void getRPMCallback(TimerHandle_t xTimer) {
-  rpmInput = pulse * 60/2; 
+  rpmInput = (pulse/2) * 60; // two pulses each rotation - hall effect sensor
   pulse = 0;
 }
 
