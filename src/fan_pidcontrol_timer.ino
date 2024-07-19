@@ -51,7 +51,8 @@ void getRPMCallback(TimerHandle_t xTimer) {
 
 void generatePIDControlCallback(TimerHandle_t xTimer) {
     // get PID parameters - potentiometer
-    setTunings(float_map(analogRead(33), 0, 4095, 0.1, 4.0), float_map(analogRead(32), 0, 4095, 0.1, 4.0), 0.0);
+    // if you use potentiometers to ajuste parameters, pins 32, 33 - CAUTION: potentiometer must be connected to 3.3V on ESP32, NOT IN +12 (OR YOU WILL BURN YOUR ESP32).
+    //setTunings(float_map(analogRead(33), 0, 4095, 0.1, 4.0), float_map(analogRead(32), 0, 4095, 0.1, 4.0), 0.0);
     y = map(rpmInput, 0, rpmMax, 0, 255);
     double e = intSetpoint - y; // tracking error
     iTerm += (ki * e); // integral term I
@@ -129,7 +130,7 @@ void setup() {
   setSampleTime(10);
   //********************* */
   
-  //setTunings(0.1, 1.2, 0.01);
+  setTunings(0.1, 1.2, 0.01);
   //setTunings(2, 5, 0.8); 
 
   // Start Printing task
