@@ -42,7 +42,9 @@ void vInitHw(void) {
 
 void vTaskTrataISRBT(void *p) {
   (void) p;
+  //uint32_t quant = 0
   while(true) {
+    //quant = ulTaskNotifyTake(pdFALSE, portMAX_DELAY); // similar to counting semaphore
     ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     digitalWrite(LED, !digitalRead(LED));
     vTaskDelay(pdMS_TO_TICKS(500));
