@@ -20,7 +20,7 @@ int v[N], count = 0;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER; //declarado estaticamente, com atributos padrão
 
 void* count3s_thread(void* id) {
-    int my_id = (int) id;
+    int my_id =  *(int*)id;
     //cout << "criei thread " << my_id;
     pthread_t thId = pthread_self();
     //printf(" with ID: %d\n", thId);
@@ -47,7 +47,7 @@ int main()  {
     clock_t tstart, tend;
     tstart = clock();
     for (int i=0; i<T; i++) {
-        err = pthread_create(&tid[i], NULL, count3s_thread, (void*) i);
+        err = pthread_create(&tid[i], NULL, count3s_thread, &i);
     }
     for (int i=0; i<T; i++) {
         err  = pthread_join(tid[i], NULL);
